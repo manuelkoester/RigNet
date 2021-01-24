@@ -35,8 +35,8 @@ pip install torch-geometric
 #### For Windows user
 
 The code has been tested on Windows 10 with cuda 10.1. The most important difference from Linux setup is, you need to download Windows-compiled Rtree from [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#rtree), and install it by
-`pip install Rtree‑0.9.4‑cp37‑cp37m‑win_amd64.whl` (64-bit system) or 
-`pip install Rtree‑0.9.4‑cp37‑cp37m‑win32.whl` (32-bit system). Other libraries can be installed in the same way as Linux setup instructions.
+`pip install Rtree‑0.9.7‑cp37‑cp37m‑win_amd64.whl` (64-bit system) or 
+`pip install Rtree‑0.9.7‑cp37‑cp37m‑win32.whl` (32-bit system). Other libraries can be installed in the same way as Linux setup instructions.
 
 
 
