@@ -11,7 +11,8 @@ On both platforms, we suggest to use conda virtual environment.
 
 #### For Linux user
 
-**[2020.09.13]** I have tested the code on Ubuntu 20.04, with cuda 10.1 + cudnn 7.6. I installed (almost all) the dependencies as their latest versions and everything works fine. The following commands have been updated which install pytorch1.6.0 and pytorch_geometric1.6.1. 
+**[2021.06.29]** I have tested the code on Windows 10 and with cuda 10.1  
+Due to [this error](https://github.com/rusty1s/pytorch_sparse/issues/127) I have set all of the torch libraries to fixed versions.
 
 ```
 conda create -n rignet python=3.7
@@ -25,11 +26,11 @@ pip install numpy scipy matplotlib tensorboard open3d==0.9.0 opencv-python
 pip install "rtree>=0.8,<0.9" 
 pip install trimesh[easy]
 conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.1 -c pytorch
-pip install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
-pip install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
-pip install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
-pip install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
-pip install torch-geometric
+pip install torch-scatter==2.05 -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
+pip install torch-sparse==0.6.8 -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
+pip install torch-cluster==1.5.8 -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
+pip install torch-spline-conv==1.2.0 -f https://pytorch-geometric.com/whl/torch-1.6.0+cu101.html
+pip install torch-geometric==1.6.3
 ```
 
 #### For Windows user
