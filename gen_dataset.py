@@ -67,6 +67,8 @@ def genDataset(process_id):
         info_filename = os.path.join(dataset_folder, 'rig_info_remesh/{:d}.txt'.format(model_id))
         remeshed_obj = o3d.io.read_triangle_mesh(remeshed_obj_filename)
         remesh_obj_v = np.asarray(remeshed_obj.vertices)
+        if not remeshed_obj.has_vertex_normals():
+            remeshed_obj.compute_vertex_normals()
         remesh_obj_vn = np.asarray(remeshed_obj.vertex_normals)
         remesh_obj_f = np.asarray(remeshed_obj.triangles)
         rig_info = Info(info_filename)
@@ -140,7 +142,7 @@ def genDataset(process_id):
             input_samples.append(this_sample)
             ground_truth_labels.append(this_label)
 
-        with open(os.path.join(dataset_folder, '{:s}/{:d}_skin.txt').format(split_name, model_id), 'w') as fout:
+        with open(os.path.join(dataset_folder, '{:s}/{:d}_skin.txt'.format(split_name, model_id)), 'w') as fout:
             for i in range(len(bone_pos)):
                 fout.write('bones {:s} {:s} {:.6f} {:.6f} {:.6f} '
                            '{:.6f} {:.6f} {:.6f}\n'.format(bone_names[i][0], bone_names[i][1],

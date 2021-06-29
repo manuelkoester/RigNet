@@ -59,7 +59,7 @@ def create_single_data(mesh_filaname):
     :return: wrapped data, voxelized mesh, and geodesic distance matrix of all vertices
     """
     mesh = o3d.io.read_triangle_mesh(mesh_filaname)
-    mesh.compute_triangle_normals()
+    mesh.compute_vertex_normals()
     mesh_v = np.asarray(mesh.vertices)
     mesh_vn = np.asarray(mesh.vertex_normals)
     mesh_f = np.asarray(mesh.triangles)
@@ -201,7 +201,7 @@ def predict_skeleton(input_data, vox, root_pred_net, bone_pred_net, mesh_filenam
     cost_matrix = increase_cost_for_outside_bone(cost_matrix, pred_joints, vox)
 
     pred_skel = Info()
-    parent, key = primMST_symmetry(cost_matrix, root_id, pred_joints)
+    parent, key, root_id = primMST_symmetry(cost_matrix, root_id, pred_joints)
     for i in range(len(parent)):
         if parent[i] == -1:
             pred_skel.root = TreeNode('root', tuple(pred_joints[i]))
